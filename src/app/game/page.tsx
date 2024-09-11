@@ -26,6 +26,7 @@ const initialDeck = [
 ];
 
 function shuffleDeck(deck: typeof initialDeck) {
+  // Fisher-Yates shuffle algorithm
   const shuffledDeck = [...deck];
   for (let i = shuffledDeck.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -40,6 +41,7 @@ export default function Game() {
   const [gameWon, setGameWon] = useState(false);
 
   useEffect(() => {
+    // Check if all cards are matched
     if (cards.every((card) => card.matched)) {
       setGameWon(true);
     }
@@ -52,6 +54,7 @@ export default function Game() {
 
     const clickedCard = cards.find((card) => card.id === id);
 
+    // Flip the card
     if (clickedCard && !clickedCard.matched && !flippedCards.includes(id)) {
       setFlippedCards((prev) => [...prev, id]);
 
@@ -67,6 +70,7 @@ export default function Game() {
           );
         }
 
+        // Reset flipped cards after delay
         setTimeout(() => setFlippedCards([]), 500);
       }
     }
@@ -79,25 +83,23 @@ export default function Game() {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen p-4">
+    <div className="flex justify-center items-center h-screen ">
       {gameWon ? (
         <div className="text-center">
-          <h1 className="text-2xl lg:text-4xl font-bold text-red-600 mb-8 lg:mb-24">
-            you won i guess... do your homework!!!!! ( ͡ಠ ʖ̯ ͡ಠ)
-          </h1>
+          <h1 className="text-4xl font-bold text-red-600 mb-24">you won i guess... do your homework!!!!! ( ͡ಠ ʖ̯ ͡ಠ)</h1>
           <Button variant={"outline"} size={"lg"} onClick={resetGame}>
             PLAY AGAIN
           </Button>
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid lg:grid-cols-4 grid-cols-3 gap-4">
           {cards.map((card) => (
             <div
               key={card.id}
-              className={`w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 flex justify-center items-center text-lg sm:text-xl lg:text-2xl font-bold border-2 border-foreground rounded-lg cursor-pointer ${
+              className={`lg:w-32 lg:h-32 w-16 h-16  flex justify-center items-center lg:text-xl text-xs font-bold border-2 border-foreground rounded-lg cursor-pointer ${
                 flippedCards.includes(card.id) || card.matched
                   ? "text-orange-500 border-orange-500"
-                  : "bg-background"
+                  : "bg-background "
               }`}
               onClick={() => handleCardClick(card.id)}
             >

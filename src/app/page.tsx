@@ -9,7 +9,7 @@ export default function Home() {
           <h1 className="text-3xl text-center">Vernon's Card Game</h1>
           <p className="px-4 text-base text-center text-muted-foreground">
             I spent way too much time on this...... Play with it I guess. Better
-            play it or Da Babe will attack you in the conex box. (i'm kidding)
+            play it or Da Babe will attack you in the conex box. (i&aposm kidding)
           </p>
           <Link href={"/game"}>
             <Button variant={"outline"} size={"lg"}>

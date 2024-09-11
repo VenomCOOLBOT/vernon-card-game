@@ -86,7 +86,7 @@ export default function Game() {
     <div className="flex justify-center items-center h-screen ">
       {gameWon ? (
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-red-600 mb-24">you won i guess... do your homework!!!!! ( ͡ಠ ʖ̯ ͡ಠ)</h1>
+          <h1 className="lg:text-4xl text-xl font-bold text-red-600 mb-24">you won i guess... do your homework!!!!! ( ͡ಠ ʖ̯ ͡ಠ)</h1>
           <Button variant={"outline"} size={"lg"} onClick={resetGame}>
             PLAY AGAIN
           </Button>
